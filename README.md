@@ -28,7 +28,7 @@
 ### 👤 User Profiles
 - Login via Discord OAuth2
 - Access your own dashboard with saves and history
-- Edit Profil (name, avatar etc ... ) 
+- Edit Profile (name, avatar etc ... ) 
 
 ---
 
