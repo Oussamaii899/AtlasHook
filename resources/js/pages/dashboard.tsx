@@ -541,34 +541,34 @@ export default function Dashboard() {
         </div>
         
       </div>
-    <footer className="border-t border-gray-200 dark:border-[#202225] bg-white dark:bg-[#2f3136] mt-12 transition-colors w-full z-40
-      sm:absolute sm:bottom-0 sm:left-0 sm:right-0">
-      <div className="mx-auto max-w-7xl px-4 py-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded bg-[#FFD700] text-black text-xs font-bold">
-              A
+      
+      <footer className="border-t border-gray-200 dark:border-[#202225] bg-white dark:bg-[#2f3136] mt-12 transition-colors">
+        <div className="mx-auto max-w-7xl px-4 py-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center space-x-2">
+              <div className="flex h-6 w-6 items-center justify-center rounded bg-[#FFD700] text-black text-xs font-bold">
+                A
+              </div>
+              <span className="text-sm text-gray-600 dark:text-[#72767d]">© 2024 AtlasHook. All rights reserved.</span>
             </div>
-            <span className="text-sm text-gray-600 dark:text-[#72767d]">© 2024 AtlasHook. All rights reserved.</span>
-          </div>
-          <div className="flex items-center space-x-6 text-sm">
-            <button
-              onClick={() => (window.location.href = "/faq")}
-              className="text-gray-600 dark:text-[#72767d] hover:text-[#FFD700] dark:hover:text-[#FFD700] transition-colors"
-            >
-              FAQ
-            </button>
-            <a
-              href='/contact'
-              className="text-gray-600 dark:text-[#72767d] hover:text-[#FFD700] dark:hover:text-[#FFD700] transition-colors"
-            >
-              Support
-            </a>
+            <div className="flex items-center space-x-6 text-sm">
+              <button
+                onClick={() => (window.location.href = "/faq")}
+                className="text-gray-600 dark:text-[#72767d] hover:text-[#FFD700] dark:hover:text-[#FFD700] transition-colors"
+              >
+                FAQ
+              </button>
+              <a
+                href={() => (window.location.href = "/contact")}
+                className="text-gray-600 dark:text-[#72767d] hover:text-[#FFD700] dark:hover:text-[#FFD700] transition-colors"
+              >
+                Support
+              </a>
 
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
     </div>
   )
 }

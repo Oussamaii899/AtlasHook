@@ -30,6 +30,7 @@ import {
   Monitor,
   Bookmark,
   RefreshCw,
+  Heart,
 } from "lucide-react"
 import { Head, usePage } from "@inertiajs/react"
 import { router } from "@inertiajs/react"
@@ -514,20 +515,20 @@ export default function AtlasHookWelcome() {
 
       if (response.ok) {
         showToast("✅ Embed sent successfully!", "success")
-        
+
         await handleSaveToHistory(embeds[activeEmbed], "success")
       } else {
         const errorText = await response.text()
         console.error("Webhook Error:", errorText)
         showToast("❌ Failed to send embed. Check the console for details.", "error")
-      
+
         await handleSaveToHistory(embeds[activeEmbed], "failed", errorText)
       }
     } catch (err) {
       console.error(err)
       const errorMessage = err instanceof Error ? err.message : "Unknown error"
       showToast("⚠️ Error sending embed. Please check your internet connection.", "error")
-    
+
       await handleSaveToHistory(embeds[activeEmbed], "failed", errorMessage)
     }
   }
@@ -581,9 +582,19 @@ export default function AtlasHookWelcome() {
             <span className="text-lg font-semibold">AtlasHook</span>
           </div>
 
-      
           <nav className="flex items-center space-x-2">
-        
+            <Button
+              variant="ghost"
+              size="sm"
+              className="group relative text-red-500 hover:text-white hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500 transition-all duration-700 ease-in-out p-2 rounded-lg shadow-sm hover:shadow-lg hover:scale-105 animate-pulse hover:animate-none"
+              onClick={() => window.open("https://paypal.me/MinecartSMP", "_blank")}
+              title="Support the developer ❤️"
+            >
+              <Heart className="h-4 w-4 group-hover:animate-bounce transition-transform duration-500" />
+              <span className="sr-only">Donate to support developer</span>
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-red-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-700 -z-10"></div>
+            </Button>
+
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -685,7 +696,6 @@ export default function AtlasHookWelcome() {
       </header>
 
       <div className="w-full max-w-7xl mx-auto px-4 py-4 lg:px-6">
-        
         <Card className="bg-white dark:bg-[#2f3136] border-gray-200 dark:border-[#202225] mb-6 w-full transition-colors">
           <CardHeader>
             <CardTitle className="text-gray-900 dark:text-white flex items-center gap-2 text-lg">
@@ -710,7 +720,6 @@ export default function AtlasHookWelcome() {
                   Get your webhook URL from Discord: Server Settings → Integrations → Webhooks
                 </p>
               </div>
-
 
               {(webhookSettings.url || isTestingWebhook || webhookError) && (
                 <div className="bg-gray-100 dark:bg-[#40444b] rounded-lg p-4 border border-gray-200 dark:border-[#4f545c] transition-colors">
@@ -851,9 +860,7 @@ export default function AtlasHookWelcome() {
         </Card>
 
         <div className="grid gap-6 xl:grid-cols-2">
-       
           <div className="space-y-6 min-w-0">
-            
             <Card className="bg-white dark:bg-[#2f3136] border-gray-200 dark:border-[#202225] w-full transition-colors">
               <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <CardTitle className="text-gray-900 dark:text-white text-lg">
@@ -870,9 +877,7 @@ export default function AtlasHookWelcome() {
                 </Button>
               </CardHeader>
               <CardContent className="p-4 sm:p-6">
-
                 <div className="relative mb-6">
-                  
                   <div className="block sm:hidden">
                     <Label className="text-gray-900 dark:text-white text-sm mb-2 block">Select Embed</Label>
                     <select
@@ -1362,7 +1367,6 @@ export default function AtlasHookWelcome() {
             </Card>
           </div>
 
-
           <div className="space-y-6 min-w-0">
             <Card className="bg-white dark:bg-[#2f3136] border-gray-200 dark:border-[#202225] transition-colors">
               <CardHeader>
@@ -1393,11 +1397,9 @@ export default function AtlasHookWelcome() {
                 </div>
               </CardHeader>
               <CardContent className={`transition-all duration-300 ${isPreviewExpanded ? "p-0" : "p-4 sm:p-6"}`}>
-            
                 {isPreviewExpanded && (
                   <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
                     <div className="bg-white dark:bg-[#2f3136] rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden border border-gray-200 dark:border-[#202225]">
-                    
                       <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-[#202225]">
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                           Discord Preview - Detailed View
@@ -1419,7 +1421,6 @@ export default function AtlasHookWelcome() {
 
                       <div className="overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-[calc(90vh-80px)]">
                         <div className="bg-gray-100 dark:bg-[#36393f] p-6 transition-colors">
-       
                           <div className="mb-4 pb-3 border-b border-gray-300 dark:border-[#4f545c]">
                             <div className="flex items-center gap-2 text-gray-600 dark:text-[#72767d]">
                               <div className="w-5 h-5 bg-gray-400 dark:bg-[#4f545c] rounded flex items-center justify-center">
@@ -1434,9 +1435,7 @@ export default function AtlasHookWelcome() {
                           <div className="space-y-4 overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                             {embeds.map((embed, embedIndex) => (
                               <div key={`expanded-${embedIndex}`} className="group">
-                                
                                 <div className="flex space-x-4 hover:bg-gray-50 dark:hover:bg-[#32353b] p-2 rounded transition-colors">
-                                
                                   <div className="w-10 h-10 rounded-full bg-[#FFD700] flex items-center justify-center text-black font-medium flex-shrink-0">
                                     {webhookSettings.avatar_url ? (
                                       <img
@@ -1452,9 +1451,7 @@ export default function AtlasHookWelcome() {
                                     <span className={webhookSettings.avatar_url ? "hidden" : ""}>A</span>
                                   </div>
 
-                     
                                   <div className="flex-1 min-w-0">
-                               
                                     <div className="flex items-center space-x-2 mb-2">
                                       <span className="font-medium text-gray-900 dark:text-white text-base">
                                         {webhookSettings.username}
@@ -1467,7 +1464,6 @@ export default function AtlasHookWelcome() {
                                       </span>
                                     </div>
 
-                                    
                                     <div
                                       className="bg-white dark:bg-[#2f3136] border-l-4 rounded max-w-lg transition-colors relative"
                                       style={{ borderLeftColor: embed.color }}
@@ -1487,7 +1483,6 @@ export default function AtlasHookWelcome() {
                                         )}
 
                                         <div className={embed.thumbnail.url ? "pr-24" : ""}>
-                                      
                                           {embed.author.name && (
                                             <div className="flex items-center space-x-2 mb-2">
                                               {embed.author.icon_url && (
@@ -1555,7 +1550,6 @@ export default function AtlasHookWelcome() {
                                         )}
 
                                         <div className="flex items-end justify-between">
-                                          
                                           {embed.footer.text && (
                                             <div className="flex items-center space-x-2 min-w-0 flex-1">
                                               {embed.footer.icon_url && (
@@ -1614,7 +1608,6 @@ export default function AtlasHookWelcome() {
                 {!isPreviewExpanded && (
                   <div className="space-y-4">
                     <div className="bg-gray-100 dark:bg-[#36393f] p-3 sm:p-4 rounded-lg max-h-[50vh] xl:max-h-[45vh] overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden transition-colors">
-   
                       <div className="overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                         {embeds.map((embed, embedIndex) => (
                           <div key={`mobile-${embedIndex}`} className="flex space-x-3 mb-4">
@@ -1789,7 +1782,6 @@ export default function AtlasHookWelcome() {
               </CardContent>
             </Card>
           </div>
-
         </div>
       </div>
 
@@ -1920,17 +1912,17 @@ export default function AtlasHookWelcome() {
             <div className="flex items-center space-x-6 text-sm">
               <button
                 onClick={() => (window.location.href = "/faq")}
-                className="text-gray-600 dark:text-[#72767d] hover:text-[#FFD700] dark:hover:text-[#FFD700] transition-colors"
+                className="text-gray-600 dark:text-[#72767d] hover:text-[#FFD700] dark:hover:text-[#FFD700] cursor-pointer transition-colors"
               >
                 FAQ
               </button>
               <a
-                href={() => (window.location.href = "/contact")}
-                className="text-gray-600 dark:text-[#72767d] hover:text-[#FFD700] dark:hover:text-[#FFD700] transition-colors"
+                href="#"
+                onClick={() => (window.location.href = "/contact")}
+                className="text-gray-600 dark:text-[#72767d] hover:text-[#FFD700] dark:hover:text-[#FFD700] cursor-pointer transition-colors"
               >
-                Support
+                Contact
               </a>
-
             </div>
           </div>
         </div>

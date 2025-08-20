@@ -543,7 +543,7 @@ export default function FAQPage() {
                 href='/contact'
                 className="text-gray-600 dark:text-[#72767d] hover:text-[#FFD700] dark:hover:text-[#FFD700] transition-colors"
               >
-                Support
+                Contact
               </a>
 
             </div>

@@ -49,9 +49,9 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
-    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     
         Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
         Route::put('/settings/preferences', [SettingsController::class, 'updatePreferences'])->name('settings.preferences');
